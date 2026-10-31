@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Tell Daley Dynamics what is not working, what you want to improve, or what you are trying to build. No technical specification is required."
+    />
+    <meta name="theme-color" content="#dce9df" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preload" as="image" href="/assets/nature-hero.jpg" fetchpriority="high" />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/node_modules/@fontsource/michroma/files/michroma-latin-400-normal.woff2"
+      crossorigin
+    />
+    <style>
+      html,
+      body {
+        background: #dce9df;
+      }
+      body {
+        margin: 0;
+        background: #dce9df url('/assets/nature-hero.jpg') center / cover fixed no-repeat;
+      }
+    </style>
+    <link rel="stylesheet" href="/src/styles.css" />
+    <link rel="stylesheet" href="/src/visual-system.css" />
+    <link rel="stylesheet" href="/src/phase2.css" />
+    <link rel="stylesheet" href="/src/core-pages.css" />
+    <title>Start a Project — Daley Dynamics</title>
+    <script>
+      document.documentElement.classList.replace('no-js', 'js');
+    </script>
+  </head>
+  <body class="core-page core-page--project">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="environment" aria-hidden="true">
+      <div class="environment__base"></div>
+      <div class="nature-foliage nature-foliage--far"></div>
+      <div class="nature-foliage nature-foliage--near"></div>
+      <div class="environment__wash"></div>
+    </div>
+
+    <header class="site-header" data-site-header>
+      <nav class="site-nav glass glass--nav" data-glass="nav" aria-label="Primary navigation">
+        <a class="brand" href="/" aria-label="Daley Dynamics, home">
+          <img
+            src="/assets/daley-dynamics-logo.png"
+            width="1400"
+            height="560"
+            alt="Daley Dynamics"
+          />
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-links"
+          data-menu-toggle
+        >
+          <span class="menu-toggle__label">Menu</span>
+          <span class="menu-toggle__icon" aria-hidden="true"><i></i><i></i></span>
+        </button>
+        <div class="nav-links" id="primary-links" data-nav-links>
+          <a href="/work/">Work</a>
+          <a href="/capabilities/">Capabilities</a>
+          <a href="/about/">About</a>
+          <a
+            class="nav-cta glass glass--compact"
+            data-glass="compact"
+            href="/start-a-project/"
+            aria-current="page"
+            >Start a Project <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="core-hero project-page__hero" aria-labelledby="page-title">
+        <div class="core-hero__copy">
+          <p class="core-kicker">Project enquiry</p>
+          <h1 id="page-title">Start with the problem.</h1>
+          <p class="core-hero__summary">
+            You don’t need to know what technology you need. Describe what isn’t working, what needs
+            improving, or what you’re trying to build.
+          </p>
+        </div>
+        <aside class="core-hero__aside glass glass--showcase" data-glass="showcase">
+          <p class="core-label">You do not need a technical specification</p>
+          <strong>Start with the situation.</strong>
+          <p>
+            A useful enquiry can begin with a recurring manual task, scattered files, difficult
+            data, unsuitable software, or the need for a proper internal server.
+          </p>
+        </aside>
+      </section>
+
+      <section class="core-section project-page__section" aria-labelledby="form-title">
+        <div class="core-shell project-page__layout">
+          <div class="project-page__intro" data-reveal>
+            <p class="project-page__note">Secure project enquiry · email delivery</p>
+            <h2 id="form-title">Share enough context to make the problem clear.</h2>
+            <p>
+              Choose any categories that seem relevant. They are only a starting point, and you can
+              change or remove preselected options before sending the form.
+            </p>
+            <ul class="enquiry-examples" aria-label="Examples of useful enquiry starting points">
+              <li>“We do this manually every week.”</li>
+              <li>“Our files are spread across too many places.”</li>
+              <li>“We have the data but cannot get a useful answer.”</li>
+              <li>“Our current software does not fit how we work.”</li>
+              <li>“We need a proper internal server.”</li>
+              <li>“We think AI could help, but we’re not sure where.”</li>
+            </ul>
+          </div>
+
+          <form
+            class="enquiry-form glass glass--content"
+            action="/api/enquiries"
+            method="post"
+            data-enquiry-form
+            data-reveal
+          >
+            <p class="form-note" id="enquiry-note">
+              Your details are used only to respond to this project enquiry.
+            </p>
+
+            <div class="form-trap" aria-hidden="true">
+              <label
+                >Leave this field empty <input name="website" tabindex="-1" autocomplete="off"
+              /></label>
+            </div>
+            <input type="hidden" name="formStartedAt" value="" />
+
+            <fieldset class="form-group">
+              <legend>Contact</legend>
+              <div class="field-grid">
+                <label>Name <input name="name" autocomplete="name" required /></label>
+                <label
+                  >Company / Organisation
+                  <input name="company" autocomplete="organization" required
+                /></label>
+                <label
+                  >Email <input type="email" name="email" autocomplete="email" required
+                /></label>
+                <label
+                  >Phone <span>Optional</span><input type="tel" name="phone" autocomplete="tel"
+                /></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <legend>Type of help</legend>
+              <div class="choice-grid">
+                <label
+                  ><input type="checkbox" name="help" value="software" /><span
+                    >Software / Internal Tool</span
+                  ></label
+                >
+                <label
+                  ><input type="checkbox" name="help" value="automation" /><span
+                    >Automation</span
+                  ></label
+                >
+                <label
+                  ><input type="checkbox" name="help" value="data" /><span
+                    >Data / Reporting / Analytics</span
+                  ></label
+                >
+                <label
+                  ><input type="checkbox" name="help" value="ai" /><span
+                    >AI / Knowledge System</span
+                  ></label
+                >
+                <label
+                  ><input type="checkbox" name="help" value="infrastructure" /><span
+                    >Server / Storage / Infrastructure</span
+                  ></label
+                >
+                <label
+                  ><input type="checkbox" name="help" value="improvement" /><span
+                    >Existing System Improvement</span
+                  ></label
+                >
+                <label
+                  ><input type="checkbox" name="help" value="unsure" /><span
+                    >Not Sure Yet</span
+                  ></label
+                >
+              </div>
+            </fieldset>
+
+            <div class="form-group form-group--text">
+              <label for="project-problem">What are you trying to solve or improve?</label>
+              <textarea
+                id="project-problem"
+                name="problem"
+                rows="6"
+                required
+                placeholder="We rebuild the same report manually every week."
+              ></textarea>
+              <div class="field-grid">
+                <label
+                  >How does it work today? <span>Optional</span
+                  ><textarea name="current-process" rows="4"></textarea>
+                </label>
+                <label
+                  >What would a good result look like? <span>Optional</span
+                  ><textarea name="desired-result" rows="4"></textarea>
+                </label>
+              </div>
+            </div>
+
+            <fieldset class="form-group">
+              <legend>Project stage</legend>
+              <div class="stage-options">
+                <label
+                  ><input type="radio" name="stage" value="exploring" required /><span
+                    >Just exploring</span
+                  ></label
+                >
+                <label
+                  ><input type="radio" name="stage" value="identified" /><span
+                    >I know what needs improving</span
+                  ></label
+                >
+                <label
+                  ><input type="radio" name="stage" value="existing" /><span
+                    >We already have a system that needs work</span
+                  ></label
+                >
+                <label
+                  ><input type="radio" name="stage" value="ready" /><span
+                    >Ready to start</span
+                  ></label
+                >
+              </div>
+            </fieldset>
+
+            <div class="form-actions">
+              <button
+                class="button glass glass--primary"
+                type="submit"
+                data-enquiry-submit
+                disabled
+              >
+                <span data-submit-label>Send project enquiry</span>
+                <span aria-hidden="true">→</span>
+              </button>
+              <p tabindex="-1" role="status" aria-live="polite" data-form-status></p>
+            </div>
+            <noscript>
+              <p class="form-note">JavaScript is required to send this secure enquiry.</p>
+            </noscript>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="global-footer">
+      <div class="global-footer__brand">
+        <a class="brand" href="/" aria-label="Daley Dynamics, home">
+          <img
+            src="/assets/daley-dynamics-logo.png"
+            width="1400"
+            height="560"
+            alt="Daley Dynamics"
+          />
+        </a>
+        <p>Systems built around your business.</p>
+      </div>
+      <nav aria-label="Footer navigation">
+        <a href="/work/">Work</a><a href="/capabilities/">Capabilities</a>
+        <a href="/about/">About</a><a href="/start-a-project/">Start a Project</a>
+      </nav>
+      <a class="global-footer__top" href="#main-content">Back to top ↑</a>
+    </footer>
+
+    <script type="module" src="/src/core-page.js"></script>
+  </body>
+</html>

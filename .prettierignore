@@ -1,0 +1,4 @@
+dist/
+node_modules/
+public/assets/
+public/favicon.png

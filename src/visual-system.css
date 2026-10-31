@@ -1,0 +1,395 @@
+/* Shared visual primitives used by the page styles and optional scene renderer. */
+@font-face {
+  font-family: 'Michroma';
+  src: url('@fontsource/michroma/files/michroma-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-display: 'Michroma', 'Avenir Next', 'Segoe UI', sans-serif;
+  --font-body: 'Avenir Next', Avenir, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-technical: 'SFMono-Regular', 'Roboto Mono', Consolas, monospace;
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-technical);
+  --teal: #007f70;
+  --green: #22b889;
+  --silver: 247, 255, 252;
+  --glass-border: rgba(var(--silver), 0.8);
+  --glass-shadow: 0 9px 24px rgba(7, 57, 41, 0.12);
+  --glass-reflection: rgba(var(--silver), 0.45);
+  --motion-hover: 180ms;
+  --motion-glass: 260ms;
+  --motion-section: 760ms;
+  --motion-ease: cubic-bezier(0.2, 0.75, 0.3, 1);
+  --nature-sway-duration: 13s;
+}
+
+@keyframes page-arrive {
+  from {
+    opacity: 0.96;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+:root.js:not([data-page-restored]) :is(.site-header, main, .global-footer) {
+  animation: page-arrive 150ms ease-out both;
+}
+
+:root.js[data-page-leaving] :is(.site-header, main, .global-footer) {
+  opacity: 0.96;
+  animation: none;
+  transition: opacity 150ms ease-out;
+}
+
+h1,
+h2,
+.type-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-synthesis: none;
+  letter-spacing: -0.045em;
+  line-height: 1.18;
+  text-wrap: balance;
+}
+
+h1 {
+  max-width: 100%;
+  font-size: clamp(2.65rem, 4.45vw, 4.8rem);
+}
+
+.section-intro h2 {
+  max-width: 100%;
+  font-size: clamp(2rem, 3.3vw, 3.4rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1.22;
+}
+
+.type-body {
+  font-family: var(--font-body);
+}
+
+.type-technical {
+  font-family: var(--font-technical);
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+/* Material values are consumed by CSS and the optional shared scene renderer. */
+.glass {
+  --glass-tint: 231, 249, 239;
+  --glass-density: 0.26;
+  --glass-blur: 3px;
+  --glass-refraction: 6;
+  --glass-edge-width: 14;
+  --glass-chromatic: 0;
+  --glass-reflection-strength: 0.09;
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(
+    145deg,
+    rgba(var(--silver), calc(var(--glass-density) + 0.15)),
+    rgba(var(--glass-tint), var(--glass-density)) 44%,
+    rgba(var(--silver), 0.12)
+  );
+  box-shadow:
+    inset 0 1px 1px rgba(var(--silver), 0.95),
+    inset 0 -2px 3px rgba(19, 107, 82, 0.13),
+    inset 2px 0 3px var(--glass-reflection),
+    var(--glass-shadow);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.12);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.12);
+}
+
+.glass--nav {
+  --glass-density: 0.38;
+  --glass-blur: 8px;
+  --glass-refraction: 4;
+  --glass-edge-width: 12;
+}
+
+.site-header[data-scrolled='true'] .glass--nav {
+  background: rgba(var(--glass-tint), 0.62);
+}
+
+.glass--content {
+  --glass-density: 0.68;
+  --glass-blur: 16px;
+  --glass-refraction: 3;
+  --glass-edge-width: 18;
+}
+
+.glass--showcase {
+  --glass-density: 0.035;
+  --glass-blur: 1px;
+  --glass-refraction: 30;
+  --glass-edge-width: 58;
+  --glass-chromatic: 0.55;
+  --glass-reflection-strength: 0.18;
+  --glass-shadow: 0 34px 65px rgba(4, 42, 31, 0.15);
+  transform: none;
+}
+
+.glass--primary,
+.glass--compact {
+  --glass-tint: 129, 216, 182;
+  --glass-density: 0.46;
+  --glass-refraction: 8;
+  --glass-edge-width: 15;
+  --glass-reflection-strength: 0.15;
+  border-color: rgba(240, 255, 246, 0.95);
+  color: #073c2e;
+  font-weight: 700;
+}
+
+.glass--secondary {
+  --glass-density: 0.22;
+  --glass-refraction: 5;
+  --glass-edge-width: 12;
+  color: #0b3027;
+}
+
+.nav-links .glass--compact {
+  padding-inline: 1.18rem;
+  color: #073c2e;
+  background: linear-gradient(145deg, rgba(240, 255, 249, 0.62), rgba(129, 216, 182, 0.35));
+  box-shadow:
+    inset 0 1px 2px white,
+    inset 0 -2px 3px #256a4933,
+    var(--glass-shadow);
+}
+
+.button,
+.nav-links .glass--compact {
+  transition:
+    box-shadow var(--motion-hover) var(--motion-ease),
+    background-color var(--motion-hover) var(--motion-ease),
+    color var(--motion-hover) ease;
+  text-shadow: 0 1px 2px rgba(var(--silver), 0.65);
+}
+
+.button:hover,
+.nav-links .glass--compact:hover,
+.button:focus-visible,
+.nav-links .glass--compact:focus-visible {
+  color: #002f24;
+  transform: none;
+  background-color: rgba(var(--glass-tint), 0.2);
+  box-shadow:
+    inset 0 2px 3px white,
+    inset 0 -2px 4px rgba(14, 105, 72, 0.24),
+    0 10px 26px rgba(8, 62, 45, 0.16);
+}
+
+.glass-object__depth {
+  z-index: 8;
+  pointer-events: none;
+}
+
+.glass-object::before,
+.glass-object__flare,
+.glass-object__edge {
+  pointer-events: none;
+}
+
+.glass-object__flare {
+  opacity: 0.3;
+}
+
+.depth-word {
+  display: inline-flex;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: auto;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    color var(--motion-hover) ease,
+    text-shadow var(--motion-glass) ease;
+}
+
+.depth-word--data {
+  top: 22%;
+  left: 30%;
+}
+.depth-word--software {
+  top: 36%;
+  left: 65%;
+  right: auto;
+}
+.depth-word--systems {
+  top: 50%;
+  left: 28%;
+}
+.depth-word--ai {
+  top: 63%;
+  left: 68%;
+  right: auto;
+}
+.depth-word--automation {
+  top: 79%;
+  left: 46%;
+  right: auto;
+  bottom: auto;
+}
+
+.depth-word:hover,
+.depth-word:focus-visible {
+  color: #002e22;
+  text-shadow:
+    0 0 5px white,
+    0 0 18px #c1ffd9;
+}
+
+.depth-word:focus-visible {
+  outline: 2px solid #00705b;
+  outline-offset: 1px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.scroll-anchor {
+  scroll-margin-top: 7rem;
+}
+
+/* Keep the static background available when the renderer is disabled. */
+.environment__base {
+  inset: 0;
+  transform: none;
+  animation: none;
+}
+
+.nature-foliage {
+  position: absolute;
+  right: -4%;
+  bottom: -8%;
+  width: min(52vw, 44rem);
+  aspect-ratio: 1;
+  background: url('/assets/fern-frond.webp') center / contain no-repeat;
+  transform-origin: 50% 96%;
+  animation: botanical-sway var(--nature-sway-duration) ease-in-out infinite alternate;
+}
+
+.nature-foliage--far {
+  right: 17%;
+  bottom: 1%;
+  width: min(35vw, 31rem);
+  opacity: 0.62;
+  --nature-sway-duration: 17s;
+  animation-delay: -7s;
+}
+
+@keyframes botanical-sway {
+  0% {
+    transform: skewX(-0.6deg) rotate(-0.9deg);
+  }
+  36% {
+    transform: skewX(0.3deg) rotate(0.4deg);
+  }
+  100% {
+    transform: skewX(0.8deg) rotate(1.1deg);
+  }
+}
+
+.scene-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+[data-scene='live'] .scene-canvas {
+  opacity: 1;
+}
+[data-scene='live'] .nature-foliage,
+[data-scene='live'] .environment__wash {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 180ms ease,
+    visibility 0s linear 180ms;
+}
+[data-scene='live'] .glass--showcase {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.reveal--object {
+  animation: none;
+}
+
+@media (max-width: 70rem) {
+  h1 {
+    font-size: clamp(2.4rem, 4.45vw, 3.75rem);
+  }
+}
+
+@media (max-width: 56rem) {
+  h1 {
+    max-width: 15ch;
+    font-size: clamp(2.1rem, 6.7vw, 3.4rem);
+  }
+  .section-intro h2 {
+    font-size: clamp(1.7rem, 4.8vw, 2.8rem);
+  }
+}
+
+@media (max-width: 30rem) {
+  h1 {
+    font-size: clamp(1.95rem, 7.4vw, 2.4rem);
+    letter-spacing: -0.045em;
+  }
+  .depth-word {
+    font-size: 0.68rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root.js :is(.site-header, main, .global-footer) {
+    animation: none;
+    transition: none;
+  }
+  .nature-foliage {
+    animation: none;
+  }
+  .scene-canvas,
+  .environment__wash {
+    transition: none;
+  }
+}
+
+/* The motion query switch mirrors the reduced-motion media query for local checks. */
+:root[data-motion='reduced'] {
+  scroll-behavior: auto;
+}
+:root[data-motion='reduced'] *,
+:root[data-motion='reduced'] *::before,
+:root[data-motion='reduced'] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+:root[data-motion='reduced'] .glass-stage,
+:root[data-motion='reduced'] .glass-object__depth {
+  transform: none;
+}
+
+@supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+  .glass {
+    background-color: rgba(228, 244, 235, 0.7);
+  }
+  .glass--showcase {
+    background-color: rgba(228, 244, 235, 0.18);
+  }
+}
