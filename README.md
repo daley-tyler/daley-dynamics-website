@@ -2,7 +2,7 @@
 
 I built this website for Daley Dynamics, my software and business systems brand. It uses semantic HTML, shared CSS and JavaScript, and an optional WebGL background. A small Node server handles project enquiries through SMTP.
 
-This is a source release candidate. Hosting and production email delivery are not configured. The original website has seven pages; this export keeps all seven URLs, with brief notices replacing the Work index and two professional case studies while disclosure permission is unconfirmed. Their project summaries and diagrams are also excluded from the homepage.
+This is the published source release. Hosting and production email delivery are not configured. The original website has seven pages; this release keeps all seven URLs, with brief notices replacing the Work index and two professional case studies while disclosure permission is unconfirmed. Their project summaries and diagrams are also excluded from the homepage.
 
 ![Homepage on desktop](docs/screenshots/home-desktop.jpg)
 
@@ -16,7 +16,7 @@ The enquiry backend validates fields, checks the request origin and body size, r
 
 ## Run locally
 
-Use Node 22.13 or newer in the 22.x line, or Node 24+. I validated this candidate with Node 24.11.1 and npm 11.6.2.
+Use Node 22.13 or newer in the 22.x line, or Node 24+. Local validation used Node 24.11.1 and npm 11.6.2; GitHub Actions also passed on Node 22 and 24.
 
 ```bash
 npm ci
@@ -42,7 +42,7 @@ npm run validate
 
 This runs ESLint, Prettier, the 23 existing backend tests, the Vite production build and six HTTP integration checks. The integration checks start temporary loopback HTTP and SMTP listeners using synthetic data. They check routes, local links, fragment targets, built resources, cache headers, error responses, SMTP acceptance and missing configuration. They exclude inherited SMTP credentials.
 
-Run `npm test` for the backend tests alone. Run `npm run build` followed by `npm run check:site` for the HTTP checks. Browser checks and dependency audit limits are recorded in [validation notes](docs/validation.md). The prepared GitHub Actions workflow runs the validation commands on Node 22 and 24; hosted results are pending publication.
+Run `npm test` for the backend tests alone. Run `npm run build` followed by `npm run check:site` for the HTTP checks. Browser checks and dependency audit limits are recorded in [validation notes](docs/validation.md). [GitHub Actions passed on Node 22 and 24](https://github.com/daley-tyler/daley-dynamics-website/actions/runs/41178742656), including lint, formatting, build, all 23 backend tests and all six HTTP checks on each runtime.
 
 ## Project structure
 

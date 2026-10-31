@@ -1,6 +1,6 @@
 # Validation
 
-Checked locally on 31 October 2026 with macOS, Node 24.11.1 and npm 11.6.2. These are local results; the included GitHub Actions workflow has not run on a hosted runner.
+Checked locally on 31 October 2026 with macOS, Node 24.11.1 and npm 11.6.2. The [published GitHub Actions run](https://github.com/daley-tyler/daley-dynamics-website/actions/runs/41178742656) also passed on Ubuntu with Node 22.23.4 and 24.22.1. Both jobs passed installation, lint, formatting, the build, all 23 backend tests and all six HTTP checks, without failed or skipped tests. These checks do not establish a production deployment or real inbox delivery.
 
 | Check                     | Result                                                                                                                                                                                                                                |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -29,4 +29,4 @@ The final npm audit reports no high or critical findings and no runtime dependen
 
 Actual SMTP authentication, relay TLS and inbox delivery were not tested. The browser form check used missing SMTP configuration; the local integration check exercised successful SMTP acceptance. No public deployment, real enquiry, client system or production service was used.
 
-Browser checks used the in-app browser. They are basic responsive and accessibility checks, not a full WCAG, screen-reader, contrast or cross-browser audit. Reduced motion was exercised using the site's existing query switch. Node 22 and Linux validation remain pending the prepared hosted workflow. No performance, uptime or professional project outcome is claimed from these checks.
+Browser checks used the in-app browser. They are basic responsive and accessibility checks, not a full WCAG, screen-reader, contrast or cross-browser audit. Reduced motion was exercised using the site's existing query switch. Node 22 and Linux validation passed in the hosted run linked above. No performance, uptime or professional project outcome is claimed from these checks.
