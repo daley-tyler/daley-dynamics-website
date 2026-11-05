@@ -61,6 +61,6 @@ Vite builds separate HTML entry points. There is no client-side router or fronte
 
 ## Development and assets
 
-I used Codex during development. The nature imagery, fern and brand graphics were generated with Codex/ImageGen. [Asset provenance](docs/asset-provenance.md) records the available evidence, my confirmation and the included Michroma font license.
+The nature imagery, fern and brand graphics were generated with Codex/ImageGen. [Asset provenance](docs/asset-provenance.md) records the available evidence, my confirmation and the included Michroma font license.
 
 This export preserves the existing implementation with publication fixes to dependencies, static asset caching, keyboard focus handling and documentation. It omits planning prompts, private review material, original Git objects and professional case-study details. The original development history is retained locally. No source-code reuse license has been added; the font's existing license applies to that dependency.
