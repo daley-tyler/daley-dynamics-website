@@ -40,7 +40,7 @@ The server returns HTML with `no-cache`. Fingerprinted JS, CSS and WOFF2 bundles
 
 The limiter is in memory and resets on restart. Multiple instances need shared limiting or an upstream control. There is no enquiry database or delivery retry queue. A browser timeout can occur after SMTP accepted a message, so retrying may duplicate an enquiry. Configure mail authentication and delivery monitoring with the chosen provider, then test actual inbox delivery separately.
 
-Before a business launch, review enquiry privacy text and retention, permitted public content, final domain, operational monitoring and proxy settings. This candidate's local checks do not establish production readiness or professional disclosure permission.
+Before a business launch, review enquiry privacy text and retention, permitted public content, final domain, operational monitoring and proxy settings. Local and hosted validation do not establish production readiness or professional disclosure permission.
 
 ## GitHub Pages
 
